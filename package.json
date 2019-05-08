@@ -1,0 +1,35 @@
+{
+  "name": "Lembrete",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "firebase": "^5.10.0",
+    "moment": "^2.24.0",
+    "react": "16.8.6",
+    "react-native": "0.59.7",
+    "react-native-action-button": "^2.8.4",
+    "react-native-router-flux": "^4.0.6",
+    "react-native-swipeable": "^0.6.0",
+    "react-native-tab-view": "^2.2.0",
+    "react-native-vector-icons": "^5.0.0",
+    "react-redux": "^7.0.2",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.4",
+    "@babel/runtime": "7.4.4",
+    "babel-jest": "24.8.0",
+    "jest": "24.8.0",
+    "metro-react-native-babel-preset": "0.54.0",
+    "react-test-renderer": "16.8.6"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
