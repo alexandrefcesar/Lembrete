@@ -41,11 +41,11 @@ class formCadastro extends Component {
         return (
             
     <KeyboardAvoidingView style={{ flex: 1, padding: 10 ,backgroundColor: '#fafafa'}}>
-    <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 0.3, justifyContent: 'center', alignItems: 'center' }}>
         <Text style={ styles.TextStyle1 }>Cadastro</Text>
     </View>
 
-    <View style={{ flex: 3.5 ,backgroundColor: '#fafafa'}}>
+    <View style={{ flex: 4 ,backgroundColor: '#fafafa'}}>
         <Icon name= 'user' size={20} style= {styles.icon}/>
             <TextInput style = {styles.input}
                underlineColorAndroid = "transparent"
