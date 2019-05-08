@@ -65,7 +65,7 @@ class formLogin extends Component {
                 <Text style={{ fontSize: 15 ,color:'#1770c9',marginLeft:10}}>Criar conta</Text>
             </TouchableHighlight>
         </View>
-        <View style={{ flex: 2}}>
+        <View style={{ flex: 1}}>
             {this.renderBtnAcessar()}
         </View>
     </View>

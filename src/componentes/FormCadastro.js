@@ -8,6 +8,7 @@ import {
     modificaNome, 
     cadastraUsuario 
 } from '../actions/AutenticacaoActions';
+import {KeyboardAvoidingView} from 'react-native';
 
 class formCadastro extends Component {
 
@@ -38,11 +39,13 @@ class formCadastro extends Component {
 
     render() {    
         return (
-    <View style={{ flex: 1, padding: 10 ,backgroundColor: '#fafafa'}}>
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            
+    <KeyboardAvoidingView style={{ flex: 1, padding: 10 ,backgroundColor: '#fafafa'}}>
+    <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
         <Text style={ styles.TextStyle1 }>Cadastro</Text>
     </View>
-    <View style={{ flex: 2,backgroundColor: '#fafafa'}}>
+
+    <View style={{ flex: 3,backgroundColor: '#fafafa'}}>
         <Icon name= 'user' size={20} style= {styles.icon}/>
             <TextInput style = {styles.input}
                underlineColorAndroid = "transparent"
@@ -66,10 +69,15 @@ class formCadastro extends Component {
                autoCapitalize = "none" 
                onChangeText={texto => this.props.modificaSenha(texto)} /> 
         </View>
+
+       
         <View style={{ flex: 1}}>
+ 
         {this.renderBtnCadastro()}
         </View>
-    </View>
+      
+    </KeyboardAvoidingView>
+    
         );
     }
 }
