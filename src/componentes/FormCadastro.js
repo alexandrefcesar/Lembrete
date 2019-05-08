@@ -45,7 +45,7 @@ class formCadastro extends Component {
         <Text style={ styles.TextStyle1 }>Cadastro</Text>
     </View>
 
-    <View style={{ flex: 3,backgroundColor: '#fafafa'}}>
+    <View style={{ flex: 3.5 ,backgroundColor: '#fafafa'}}>
         <Icon name= 'user' size={20} style= {styles.icon}/>
             <TextInput style = {styles.input}
                underlineColorAndroid = "transparent"
