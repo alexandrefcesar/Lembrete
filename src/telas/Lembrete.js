@@ -36,7 +36,10 @@ class Lembrete extends Component{
         })
 		var PushNotification = require('react-native-push-notification')
 		
-		console.log(livro.date);
+		
+		var teste = moment(livro.date).add(60,'s');
+		//console.log(teste.toDate());
+		
 		
 		PushNotification.configure({
 
@@ -57,7 +60,7 @@ class Lembrete extends Component{
 		})
 		
 		if(Platform.OS==='android'){
-			PushNotification.localNotification({
+			PushNotification.localNotificationSchedule({
 			
 			ticker: "My Notification Ticker", // (optional)
 			autoCancel: true, // (optional) default: true
@@ -75,18 +78,18 @@ class Lembrete extends Component{
 			message: livro.desc, // (required)
 			playSound: true, // (optional) default: true
 			soundName: 'default', // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
-			date: (livro.date + (120 * 1000)) // in 120 secs
+			date: (teste.toDate()) // in 120 secs
 			});
 		}
 		else{
-			PushNotification.localNotification({
+			PushNotification.localNotificationSchedule({
 			
 			/* iOS and Android properties */
 			title: "Lembrete", // (optional)
 			message: livro.desc, // (required)
 			playSound: true, // (optional) default: true
 			soundName: 'default', // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
-			date: (livro.date + (60 * 1000)) // in 60 secs
+			date: (teste.toDate()) // in 60 secs
 			});
 		}
 		
