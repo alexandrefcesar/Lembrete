@@ -27,12 +27,70 @@ class Lembrete extends Component{
     } 
     addFuncoes= livro =>{
         const livros=[...this.state.livros]
+		const idN = Math.random()
         livros.push({
-            id:Math.random(),
+            id: idN,
             desc:livro.desc,
             estimateAt:livro.date,
             doneAt:null
         })
+		var PushNotification = require('react-native-push-notification')
+		
+		console.log(livro.date);
+		
+		PushNotification.configure({
+
+			
+			// (required) Called when a remote or local notification is opened or received
+			onNotification: function(notification) {
+				console.log( 'NOTIFICATION:', notification );
+				if(Platform.OS==='ios'){
+					notification.finish(PushNotificationIOS.FetchResult.NoData);
+				}				
+			},
+
+			// Should the initial notification be popped automatically
+			// default: true
+			popInitialNotification: false,
+			requestPermissions: true,
+			
+		})
+		
+		if(Platform.OS==='android'){
+			PushNotification.localNotification({
+			
+			ticker: "My Notification Ticker", // (optional)
+			autoCancel: true, // (optional) default: true
+			largeIcon: "ic_launcher", // (optional) default: "ic_launcher"
+			smallIcon: "ic_notification", // (optional) default: "ic_notification" with fallback for "ic_launcher"
+			vibrate: true, // (optional) default: true
+			vibration: 300, // vibration length in milliseconds, ignored if vibrate=false, default: 1000
+			ongoing: false, // (optional) set whether this is an "ongoing" notification
+			priority: "high", // (optional) set notification priority, default: high
+			visibility: "private", // (optional) set notification visibility, default: private
+			importance: "high", // (optional) set notification importance, default: high
+
+			/* iOS and Android properties */
+			title: "Lembrete", // (optional)
+			message: livro.desc, // (required)
+			playSound: true, // (optional) default: true
+			soundName: 'default', // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
+			date: (livro.date + (120 * 1000)) // in 60 secs
+			});
+		}
+		else{
+			PushNotification.localNotification({
+			
+			/* iOS and Android properties */
+			title: "Lembrete", // (optional)
+			message: livro.desc, // (required)
+			playSound: true, // (optional) default: true
+			soundName: 'default', // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
+			date: (livro.date + (60 * 1000)) // in 60 secs
+			});
+		}
+		
+		
         this.setState({livros,showAddFuncoes:false
         },this.filterFuncoes)
     }
